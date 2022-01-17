@@ -1,0 +1,125 @@
+(function() {
+  var $app = document.querySelector('.app');
+  var $play = document.querySelector('.app__play');
+  var $cross = document.querySelector('.app__cross');
+  var $appSongs = document.querySelectorAll('.app__song');
+  var $arrMusic = document.querySelectorAll('.js-hook--music');
+  var $appBg = document.querySelector('.app__bg');
+  var $likes = document.querySelectorAll('.app__song-likes');
+  var $reset = document.querySelector('.reset');
+  var animSpeed = 50;
+  var crossAnimSpeed = 1500;
+  var crossAnim = false;
+  var animDuration = animSpeed * ($arrMusic.length - 2);
+  var animShowIn = false;
+  var animLikes = false;
+  var showMusicDelay = 500;
+  var songOpenDelay = 1000;
+  var likesDelay = 300;
+  var songsChangeDelay = 500;
+  var resetFadeDelay = 500;
+  var fadeOutCrossDelay = 400;
+
+  var showIn = function() {
+    if (!animShowIn) {
+      animShowIn = true;
+      $cross.classList.add('fadeOutCross');
+      $play.classList.add('fadeOutPlay');
+
+      setTimeout(function() {
+        $appBg.classList.remove('resetFade');
+        $appBg.classList.add('showInBg');
+        for (let i = 0, l = $arrMusic.length; i < l; i++) {
+          setTimeout(function() {
+            $arrMusic[i].classList.add('showIn');
+          }, animSpeed * i)
+        }
+
+        setTimeout(function() {
+          animShowIn = false;
+          $app.style.overflow = 'hidden';
+        }, animDuration + 1000)
+
+        setTimeout(function() {
+          $arrMusic[3].classList.add('songopen');
+          $likes[1].style.opacity = '1';
+
+          setTimeout(function() {
+            for (var i = 0, l = $likes[0].children.length; i < l; i++) {
+              $likes[1].children[i].style.opacity = '1';
+            }
+          }, likesDelay)
+        }, songOpenDelay)
+      }, showMusicDelay)
+    }
+  }
+
+  var showLikes = function(e) {
+    var $parent = e.target.parentNode;
+    var $likes = $parent.children[3];
+
+    if (!$parent.classList.contains('songopen') && animLikes === false && animShowIn === false) {
+      animLikes = true;
+      for (var i = 0; i < $appSongs.length; i++) {
+        $appSongs[i].classList.remove('songopen');
+        $appSongs[i].children[3].style.opacity = '0';
+        $likes.children[i].style.opacity = '0';
+
+        setTimeout(function() {
+          $parent.classList.add('songopen');
+          $likes.style.opacity = '1';
+          setTimeout(function() {
+            for (var i = 0, l = $likes.children.length; i < l; i++) {
+              $likes.children[i].style.opacity = '1';
+            }
+          }, likesDelay)
+        }, songsChangeDelay)
+
+        setTimeout(function() {
+          animLikes = false;
+        }, songsChangeDelay + likesDelay)
+      }
+    }
+  }
+
+  var reset = function() {
+    if ($appBg.classList.contains('showInBg') && animShowIn === false) {
+      animShowIn = true;
+      for (var i = 0; i < $appSongs.length; i++) {
+        $appSongs[i].classList.remove('songopen');
+        $appSongs[i].children[3].style.opacity = '0';
+      }
+
+      for (let i = 0, l = $arrMusic.length; i < l; i++) {
+        $arrMusic[i].classList.add('resetFade');
+        $appBg.classList.add('resetFade');
+        setTimeout(function() {
+          $arrMusic[i].classList.remove('showIn');
+          $arrMusic[i].classList.remove('resetFade');
+          $appBg.classList.remove('showInBg');
+        }, resetFadeDelay)
+      }
+
+      setTimeout(function() {
+        $cross.classList.remove('fadeOutCross');
+        $play.classList.remove('fadeOutPlay');
+      }, fadeOutCrossDelay)
+
+      setTimeout(function() {
+        animShowIn = false;
+      }, crossAnimSpeed + fadeOutCrossDelay)
+    }
+  }
+
+  $reset.addEventListener('click', reset);
+
+  setTimeout(function() {
+    if (!crossAnim) {
+      $play.addEventListener('click', showIn);
+    }
+  }, crossAnimSpeed)
+
+  for (var i = 0, l = $appSongs.length; i < l; i++) {
+    $appSongs[i].addEventListener('click', showLikes);
+  }
+})();

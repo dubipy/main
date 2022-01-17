@@ -1,0 +1,568 @@
+// Works bad in IE
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$backgroundCon: url('http://hdqwalls.com/wallpapers/forest-mist.jpg') center center no-repeat;
+$backgroundApp: rgba(117, 142, 170, .4);
+$backgroundPlay: rgba(47, 60, 96, .4);
+$crossSize: 100px;
+$crossClr: #fff;
+$playBtnClr: #e8e8e8;
+$white: #eaeaea;
+$showInSpeedMusic: .6s;
+@mixin pseudo {
+  content: '';
+  position: absolute;
+  display: block;
+}
+
+.stuff {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  .fa-twitter {
+    float: right;
+    color: #1DA1F2;
+    font-size: 50px;
+    margin: 0 20px 20px 0;
+  }
+  .fa-dribbble {
+    float: left;
+    color: #C32361;
+    font-size: 50px;
+    margin: 0 0 20px 20px;
+  }
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  background: $backgroundCon;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 300px;
+  height: 515px;
+  background-color: $backgroundApp;
+  box-shadow: 0 0 1px $backgroundApp;
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    width: 100%;
+    height: 100%;
+    background-color: darken($backgroundApp, 2%);
+    z-index: 0;
+    opacity: 0;
+  }
+  &__cross {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $crossSize;
+    height: $crossSize;
+    border: 2px solid $crossClr;
+    border-radius: 50%;
+    box-shadow: 0 0 1px $crossClr;
+    opacity: 0;
+    z-index: 0;
+    animation: fadeInCross 1.5s forwards;
+    @keyframes fadeInCross {
+      33% {
+        transform: translate(-50%, 75px) rotate(0);
+        opacity: 1
+      }
+      40% {
+        transform: translate(-50%, 75px) rotate(0);
+        opacity: 1
+      }
+      65% {
+        transform: translate(-50%, 75px) rotate(-45deg);
+        opacity: 1
+      }
+      75% {
+        transform: translate(-50%, 75px) rotate(-45deg);
+        opacity: 1
+      }
+      100% {
+        transform: translate(-50%, 75px) rotate(-90deg);
+        opacity: 1
+      }
+    }
+    &:after,
+    &:before {
+      @include pseudo;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 63px;
+      height: 2px;
+      background-color: $crossClr;
+    }
+    &:before {
+      left: 17%;
+      transform: rotate(-45deg);
+    }
+  }
+  &__play {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+    transform: translateY(65px);
+    background-color: $backgroundPlay;
+    box-shadow: 0 0 1px $backgroundPlay;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    animation: fadeInPlay .5s forwards;
+    @keyframes fadeInPlay {
+      100% {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+    &:hover &-par,
+    &-btn,
+    &-btn:after {
+      text-shadow: 0 0 1px $white;
+      color: lighten($playBtnClr, 15%);
+    }
+    &:hover &-btn {
+      text-shadow: 0 0 1px $white;
+      border-color: lighten($playBtnClr, 15%);
+    }
+    &:hover &-btn:after {
+      text-shadow: 0 0 1px $white;
+      border-color: transparent transparent transparent lighten($playBtnClr, 15%);
+    }
+    &-par {
+      position: relative;
+      text-align: center;
+      color: $playBtnClr;
+      transition: .2s;
+    }
+    &-btn {
+      position: relative;
+      margin-right: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid darken($playBtnClr, 15%);
+      transition: .2s;
+      &:after {
+        @include pseudo;
+        top: 50%;
+        left: 35%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 10px;
+        border-color: transparent transparent transparent darken($playBtnClr, 15%);
+        transition: .2s;
+      }
+    }
+  }
+  &__nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    transform: translateX(100%);
+    background-color: darken($backgroundApp, 5%);
+    border-bottom: 2px solid lighten($backgroundApp, 5%);
+    z-index: 5;
+    opacity: 0;
+    &-hamburger {
+      position: relative;
+      margin: 33px 0 0 15px;
+      width: 8px;
+      height: 1px;
+      background-color: darken($white, 10%);
+      box-shadow: 0 0 1px darken($white, 10%);
+      &:after,
+      &:before {
+        @include pseudo;
+        top: -5px;
+        width: 13px;
+        height: 1px;
+        background-color: darken($white, 10%);
+        box-shadow: 0 0 1px darken($white, 10%);
+      }
+      &:before {
+        top: 5px;
+      }
+    }
+    &-text {
+      margin: 22px 0 0 15px;
+      color: $white;
+    }
+    &-settings {
+      margin: 20px 15px 0 0;
+      font: {
+        size: 20px;
+      }
+      color: $white;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 2px $white;
+      }
+    }
+  }
+  &__search {
+    position: relative;
+    height: 45px;
+    transform: translateX(100%);
+    background-color: darken($backgroundApp, 5%);
+    z-index: 1;
+    opacity: 0;
+    &-input {
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      height: 25px;
+      padding-left: 15px;
+      font: {
+        size: 12px;
+      }
+      color: $white;
+      border: none;
+      border-radius: 20px;
+      background-color: darken($backgroundApp,
+      10%);
+      &::-webkit-input-placeholder {
+        color: lighten($backgroundApp, 10%);
+        text-shadow: 0 0 1px lighten($backgroundApp, 10%);
+      }
+      &::-moz-placeholder {
+        color: lighten($backgroundApp, 10%);
+        text-shadow: 0 0 1px lighten($backgroundApp, 10%);
+      }
+      &:-ms-input-placeholder {
+        color: lighten($backgroundApp, 10%);
+        text-shadow: 0 0 1px lighten($backgroundApp, 10%);
+      }
+      &:-moz-placeholder {
+        color: lighten($backgroundApp, 10%);
+        text-shadow: 0 0 1px lighten($backgroundApp, 10%);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    &-fa {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: darken($white, 10%);
+      font: {
+        size: 14px;
+      }
+    }
+  }
+  &__song {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    height: 88px;
+    transform: translateX(100%);
+    background-color: $backgroundApp;
+    transition: .4s;
+    z-index: 1;
+    opacity: 0;
+    &:after {
+      @include pseudo;
+      right: 0;
+      bottom: 0;
+      width: 208px;
+      height: 1px;
+      background-color: lighten($backgroundApp, 5%);
+      box-shadow: 0 0 2px lighten($backgroundApp, 5%);
+    }
+    &-img {
+      width: 88px;
+      height: 88px;
+      margin-left: 3px;
+    }
+    &-info {
+      width: 160px;
+      &-name,
+      &-artist {
+        color: $white;
+        text-shadow: 0 0 1px $white;
+        margin-left: 17px;
+        font: {
+          size: 12px;
+          weight: 600;
+        }
+        cursor: default;
+      }
+      &-name {
+        margin-top: 12px;
+      }
+      &-artist {
+        position: relative;
+        &:after {
+          @include pseudo;
+          top: 30px;
+          width: 130px;
+          height: 1px;
+          background-color: rgba($white, .15);
+          box-shadow: 0 0 1px rgba($white, .15);
+        }
+      }
+      &-likes,
+      &-dl {
+        display: inline-block;
+        margin: 20px 0 0 17px;
+        font: {
+          size: 10px;
+        }
+        color: darken($white,
+        10%);
+        text-shadow: 0 0 1px darken($white,
+        10%);
+        cursor: default;
+        .fa {
+          margin-right: 4px;
+        }
+      }
+    }
+    &-dl {
+      &-arrow {
+        position: relative;
+        margin: 25px auto 0 auto;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 1px solid rgba($white, .5);
+        span {
+          position: absolute;
+          left: 11px;
+          top: 5px;
+          height: 12px;
+          width: 1px;
+          background-color: rgba($white, .7);
+          &:after,
+          &:before {
+            @include pseudo;
+            left: -4px;
+            bottom: 2px;
+            width: 5px;
+            height: 1px;
+            background-color: rgba($white, .7);
+            transform: rotate(45deg);
+          }
+          &:before {
+            left: 0px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+    &-likes {
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      background-color: darken($backgroundApp, 5%);
+      opacity: 0;
+      transition: .5s;
+      &-pause {
+        opacity: 0;
+        transition: .8s;
+        &:after,
+        &:before {
+          @include pseudo;
+          top: 17px;
+          left: 45px;
+          height: 24px;
+          width: 2px;
+          background-color: $white;
+          border-radius: 5px;
+        }
+        &:before {
+          left: 65px;
+        }
+      }
+      &-like {
+        width: 35px;
+        text-align: center;
+        opacity: 0;
+        transition: .8s;
+        margin-left: 15px;
+        font: {
+          size: 27px;
+        }
+        color: $white;
+      }
+      &-dl {
+        position: relative;
+        height: 24px;
+        width: 2px;
+        background-color: $white;
+        opacity: 0;
+        transition: .8s;
+        &:after,
+        &:before {
+          @include pseudo;
+          bottom: 0;
+          left: -4px;
+          height: 10px;
+          width: 2px;
+          background-color: $white;
+          transform: rotate(-45deg);
+        }
+        &:before {
+          transform: rotate(45deg);
+          left: 4px;
+        }
+      }
+    }
+    &-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba((darken($backgroundApp, 10%)), .3);
+      }
+    }
+  }
+  &__song--1 {
+    &-img {
+      background: url('https://s26.postimg.org/u0f4tequh/tn1.png') center center no-repeat;
+      background-size: cover;
+    }
+  }
+  &__song--2 {
+    flex-flow: row wrap;
+    transition: .6s;
+    &-img {
+      background: url('https://s26.postimg.org/8s1gbzcdl/tn2.png') center center no-repeat;
+      background-size: cover;
+    }
+  }
+  &__song--3 {
+    &-img {
+      background: url('https://s26.postimg.org/np9xczpm1/tn3.png') center center no-repeat;
+      background-size: cover;
+    }
+  }
+  &__song--4 {
+    border: none;
+    &:after {
+      display: none;
+    }
+    &-img {
+      background: url('https://s26.postimg.org/h03dwz4a1/tn4.png') center center no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.showIn {
+  animation: showIn $showInSpeedMusic forwards;
+  @keyframes showIn {
+    15% {
+      opacity: 0
+    }
+    50% {
+      transform: translateX(-8px)
+    }
+    70% {
+      transform: translateX(5px)
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1
+    }
+  }
+}
+
+.showInBg {
+  animation: showIn .5s forwards;
+}
+
+.fadeOutCross {
+  animation: fadeOutCross .5s forwards;
+  @keyframes fadeOutCross {
+    0% {
+      transform: translate(-50%, 75px) rotate(-90deg);
+      opacity: 1
+    }
+    100% {
+      transform: translate(-50%, 75px) rotate(-90deg);
+      opacity: 0
+    }
+  }
+}
+
+.fadeOutPlay {
+  animation: fadeOutPlay .5s forwards;
+  @keyframes fadeOutPlay {
+    0% {
+      transform: translateY(0);
+      opacity: 1
+    }
+    99% {
+      transform: translateY(0);
+      opacity: 0
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0
+    }
+  }
+}
+
+.songopen {
+  height: 148px;
+  &:after {
+    opacity: 0;
+    transition: .2s;
+  }
+}
+
+.resetFade {
+  transform: translateX(0);
+  opacity: 1;
+  animation: test .5s forwards;
+  @keyframes test {
+    100% {
+      transform: translate(0px, 100px);
+      opacity: 0
+    }
+  }
+}

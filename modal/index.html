@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src="https://kit.fontawesome.com/27b2ad561b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="overlay-computer" id="overlay-computer">
+        <div class="fluid-container">
+            <div class="first-row-win" id="first-row-win">
+                <div class="left">
+                    <i class="fa fa-hdd-o"></i>
+                    <i class="fa fa-file-o"></i>
+                    <i class="fa fa-folder"></i>
+                    <span>Front End</span>
+                </div>
+                <div class="right">
+                    <i class="fa fa-window-minimize" onclick="closeopencom()"></i>
+                    <i class="fa fa-window-restore" onclick="returncom()" id="returncam" style="display:none;"></i>
+                    <i class="fa fa-window-maximize" onclick="upercom()" id="upercam"></i>
+                    <i class="fa fa-times" onclick="closecom()"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="second-row-win">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a class="home-a" href="#home" aria-controls="home"
+                                role="tab" data-toggle="tab">File</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                data-toggle="tab">Home</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                data-toggle="tab">Share</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
+                                data-toggle="tab">View</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-envelope-open fa-2x"></i>
+                                <p>Mail</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-file-code-o  fa-2x"></i>
+                                <p>Code</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-sticky-note-o fa-2x"></i>
+                                <p>Note</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-user-circle fa-2x"></i>
+                                <p>User</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-battery-4  fa-2x"></i>
+                                <p>battery</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-book fa-2x"></i>
+                                <p>Book</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-car fa-2x"></i>
+                                <p>Car</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-camera-retro  fa-2x"></i>
+                                <p>cam</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-building fa-2x"></i>
+                                <p>build</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="settings">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-cubes fa-2x"></i>
+                                <p>cubes</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-coffee fa-2x"></i>
+                                <p>coffee</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-film fa-2x"></i>
+                                <p>film</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="third-row-win">
+                <div class="col-xs-2">
+                    <i class="fa fa-long-arrow-left"></i>
+                    <i class="fa fa-long-arrow-right"></i>
+                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+                <div class="col-xs-7">
+                    <div class="path-input">
+                        <span class="path-icon-input">This pc</span>
+                        <span class="path-icon-input">Mohamed Yahya (E:)</span>
+                        <span class="path-icon-input">programming</span>
+                        <span class="path-icon-input">Front End</span>
+                    </div>
+                    <i class="fa fa-hdd-o path-icon"></i>
+                    <i class="fa fa-repeat path-icon-1"></i>
+                    <i class="path-icon-2">|</i>
+                </div>
+                <div class="col-xs-3">
+                    <input class="search-input" type="text" placeholder="Search">
+                    <i class="fa fa-search path-icon-1"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="fourd-row-win">
+                <div class="col-xs-3" style="border-right: 1px solid #808080;">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="fa fa-star">Quick access</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span class="fa fa-folder-open">Creative Cloud</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <span class="fa fa-desktop">This PC</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9 ">
+                    <div class="row main-folders">
+                        <div class="col-xs-2 folders text-center" ondblclick="openimg()">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500503391/admin-3_yilprt.jpg"
+                                    class="img-responsive  center-block" alt=""></p>
+                            <span>Photo</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center" ondblclick="openvid()">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500505068/myposter_vlaggb.png"
+                                    class="img-responsive  center-block" alt=""></p>
+                            <span>Video</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center" ondblclick="opennote()">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500505134/if_sticky-note_299111_px7waa.png"
+                                    class="img-responsive  center-block" alt=""></p>
+                            <span>Note</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img
+                                    src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500502735/if_folder-blue_285658_f5jeko.svg"
+                                    class="img-responsive  center-block" style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="fived-row-win"></div>
+        </div>
+        <div class="resizer"></div>
+    </div>
+</body>
+
+</html>

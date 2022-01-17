@@ -1,0 +1,53 @@
+.desktop-container--origin {
+    font-family: "Ubuntu Mono", monospace;
+}
+.desktop-container--origin .console {
+    font-family: "Source Code Pro", "Courier New", Courier, monospace;
+}
+.desktop-container--origin .desktop {
+    background: -webkit-gradient(linear, left top, left bottom, from(#070808), to(#3c4240));
+    background: -o-linear-gradient(top, #070808 0%, #3c4240 100%);
+    background: linear-gradient(to bottom, #070808 0%, #3c4240 100%);
+    background: #333 url("/assets/e4190c97dbe68c69ef4acbb54ce9346b.jpg") no-repeat 50% 50%;
+    background-size: cover;
+}
+.desktop-container--origin .window__title {
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.8);
+}
+.desktop-container--origin .window__titlebar {
+    background: -webkit-gradient(linear, left top, left bottom, from(#5a5a5a), color-stop(33%, #393939));
+    background: -o-linear-gradient(top, #5a5a5a 0%, #393939 33%);
+    background: linear-gradient(to bottom, #5a5a5a 0%, #393939 33%);
+}
+.desktop-container--origin .window--active .window__titlebar {
+    background: -webkit-gradient(linear, left top, left bottom, from(#5a5a5a), color-stop(33%, #1f1f1f));
+    background: -o-linear-gradient(top, #5a5a5a 0%, #1f1f1f 33%);
+    background: linear-gradient(to bottom, #5a5a5a 0%, #1f1f1f 33%);
+}
+.desktop-container--origin .window--vid .window__titlebar {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.65)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+}
+.desktop-container--origin .window--exe {
+    background: transparent;
+}
+.desktop-container--origin .window--exe .window__titlebar {
+    background: -webkit-gradient(linear, left top, left bottom, from(#5a5a5a), color-stop(33%, black));
+    background: -o-linear-gradient(top, #5a5a5a 0%, black 33%);
+    background: linear-gradient(to bottom, #5a5a5a 0%, black 33%);
+}
+.desktop-container--origin .window--exe:not(.window--maximized) .window__titlebar {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(90, 90, 90, 0.8)), color-stop(33%, rgba(0, 0, 0, 0.8)));
+    background: -o-linear-gradient(top, rgba(90, 90, 90, 0.8) 0%, rgba(0, 0, 0, 0.8) 33%);
+    background: linear-gradient(to bottom, rgba(90, 90, 90, 0.8) 0%, rgba(0, 0, 0, 0.8) 33%);
+}
+.desktop-container--origin .taskbar {
+    background: -webkit-gradient(linear, left top, left bottom, from(#555), color-stop(33%, #272727));
+    background: -o-linear-gradient(top, #555 0%, #272727 33%);
+    background: linear-gradient(to bottom, #555 0%, #272727 33%);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+}
+.desktop-container--origin + .remote .footer {
+    font-family: "Source Code Pro", "Courier New", Courier, monospace;
+}

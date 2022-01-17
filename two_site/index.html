@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>main</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css?after'>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./twitch.css">
+    <script src="https://kit.fontawesome.com/27b2ad561b.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="typewriter();">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <div class="header">
+        <div class="status__bar">
+            <i class="fab fa-apple"></i>
+            <span>Finder</span>
+            <span>파일</span>
+            <span>편집</span>
+            <span>보기</span>
+            <span>이동</span>
+            <span>윈도우</span>
+            <span>도움말</span>
+        </div>
+        <div class="status__bar__2">
+            <i class="fas fa-comment"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-volume-down"></i>
+            <span class="status-bar__battery-level">100%</span>
+            <i class="fas fa-battery-full"></i>
+            <span class="js-clock">
+                <span>00:00</span>
+            </span>
+
+        </div>
+    </div>
+    <div class="icon-computer terminal-computer" id="icon-computer" ondblclick="location.href='';">
+        <img src="./img/Terminal.png" class="img-responsive">
+        <p>Terminal</p>
+    </div>
+    <div class="icon-computer folder-computer" id="folder-computer" ondblclick="location.href='';">
+        <img src="./img/folder.png" class="img-responsive"">
+        <p>Folder</p>
+    </div>
+    <div class=" icon-computer text-center" id="icon-computer" ondblclick="location.href='';">
+        <img src="./img/finder.png" class="img-responsive"">
+        <p>Finder</p>
+    </div>
+    <div class=" icon-computer twitch-computer " id="icon-computer" ondblclick="location.href='';">
+      <img src="./img/twitch.png" class="img-responsive"">
+      <p>twitch</p>
+  </div>
+    <div class=" icon-computer text-center" id="icon-computer" ondblclick="location.href='';">
+        <img src="./img/trash.png" class="img-responsive"">
+        <p>Trash</p>
+    </div>
+    <!-- <div class=" icon">
+        <button type="button" id="icon" class="icon">
+            <img src="./img/Terminal.png" alt="Terminal">
+            <p>터미널</p>
+        </button>
+        <button type="button" id="icon" class="icon">
+            <img src="./img/folder.png" alt="folder">
+            <p>폴더</p>
+        </button>
+        <button type="button" id="icon" class="icon">
+            <img src="./img/finder.png" alt="finder">
+            <p>Finder</p>
+        </button>
+        <button type="button" id="icon" class="icon">
+            <img src="./img/trash.png" alt="trash">
+            <p>휴지통</p>
+        </button>
+    </div> -->
+    <div id="container">
+        <div id="dock">
+            <ul>
+                <li>
+                    <span>Chrome</span>
+                    <a href="#"><img src="./img/dock/chrome.png" alt="chrome">
+                    </a>
+                </li>
+                <li>
+                    <span>App_Store</span>
+                    <a href="#"><img src="./img/dock/app_store.png" alt="app_store">
+                    </a>
+                </li>
+                <li>
+                    <span>ITerm</span>
+                    <a href="#"><img src="./img/dock/iterm.png" alt="iterm">
+                    </a>
+                </li>
+                <li>
+                    <span>KaKaoTalk</span>
+                    <a href="#"><img src="./img/dock/kakaotalk.png" alt="kakao">
+                        <div class="badge">+999</div>
+                    </a>
+                </li>
+                <li>
+                    <span>Notion</span>
+                    <a href="#"><img src="./img/dock/notion.png" alt="notion">
+                    </a>
+                </li>
+                <li>
+                    <span>VSCDOE</span>
+                    <a href="#"><img src="./img/dock/vscode.png" alt="vscode">
+                    </a>
+                </li>
+                <li>
+                    <span>Git</span>
+                    <a href="#"><img src="./img/dock/git.png" alt="git">
+                    </a>
+                </li>
+                <li>
+                    <span>NETFLIX</span>
+                    <a href="#"><img src="./img/dock/netflix.png" alt="netflix">
+                    </a>
+                </li>
+                <li>
+                    <span>Trash</span>
+                    <a href="#"><img src="./img/trash.png" alt="trash">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- terminal 페이지 -->
+    <div class="wrapper">
+        <div class="terminal">
+            <div class="terminal__head">
+                <div class="head__circle head__circle--close"></div>
+                <div class="head__circle head__circle--turn"> </div>
+                <div class="head__circle head__circle--expand"></div>
+            </div>
+            <div class="terminal__text" id="typedtext"></div>
+        </div>
+    </div>
+    <!-- terminal 페이지 -->
+
+    <!-- Folder 페이지 -->
+    <div class="overlay-computer" id="overlay-computer">
+        <div class="fluid-container">
+            <div class="first-row-win" id="first-row-win">
+                <div class="left">
+                    <i class="fa fa-hdd-o"></i>
+                    <i class="fa fa-file-o"></i>
+                    <i class="fa fa-folder"></i>
+                    <span>Front End & Kimminjun</span>
+                </div>
+                <div class="right">
+                    <i class="fa fa-window-minimize" onclick="closeopencom()"></i>
+                    <i class="fa fa-window-restore" onclick="returncom()" id="returncam" style="display:none;"></i>
+                    <i class="fa fa-window-maximize" onclick="upercom()" id="upercam"></i>
+                    <i class="fa fa-times closeButton" onclick="closecom()" id="closeercam"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="second-row-win">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a class="home-a" href="#home" aria-controls="home"
+                                role="tab" data-toggle="tab">File</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                data-toggle="tab">Home</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                data-toggle="tab">Share</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
+                                data-toggle="tab">View</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-envelope-open fa-2x"></i>
+                                <p>Mail</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-file-code-o  fa-2x"></i>
+                                <p>Code</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-sticky-note-o fa-2x"></i>
+                                <p>Note</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-user-circle fa-2x"></i>
+                                <p>User</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-battery-4  fa-2x"></i>
+                                <p>battery</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-book fa-2x"></i>
+                                <p>Book</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-car fa-2x"></i>
+                                <p>Car</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-camera-retro  fa-2x"></i>
+                                <p>cam</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-building fa-2x"></i>
+                                <p>build</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="settings">
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-cubes fa-2x"></i>
+                                <p>cubes</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-coffee fa-2x"></i>
+                                <p>coffee</p>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <i class="fa fa-film fa-2x"></i>
+                                <p>film</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="third-row-win">
+                <div class="col-xs-2">
+                    <i class="fa fa-angle-left fa-lg"></i>
+                    <i class="fa fa-angle-right fa-lg"></i>
+                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+                <div class="col-xs-7">
+                    <div class="path-input">
+                        <span class="path-icon-input">This pc</span>
+                        <span class="path-icon-input">My Disk (A:)</span>
+                        <span class="path-icon-input">programming</span>
+                        <span class="path-icon-input">Front End</span>
+                    </div>
+                    <i class="fa fa-hdd-o path-icon"></i>
+                    <i class="fa fa-repeat path-icon-1"></i>
+                    <i class="path-icon-2">|</i>
+                </div>
+                <div class="col-xs-3">
+                    <input class="search-input" type="text" placeholder="Search">
+                    <i class="fa fa-search path-icon-1"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="fourd-row-win">
+                <div class="col-xs-3" style="border-right: 1px solid #808080;">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="fa fa-star">Quick access</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span class="fa fa-folder-open">Creative Cloud</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <span class="fa fa-desktop">This PC</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <p><span class="fa fa-desktop">Desktop</span></p>
+                                    <p><span class="fa fa-download">Downloads</span></p>
+                                    <p><span class="fa fa-file-text">documents</span></p>
+                                    <p><span class="fa fa-picture-o ">Picture</span></p>
+                                    <p><span class="fa fa-folder ">Folder</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9 ">
+                    <div class="row main-folders">
+                        <div class="col-xs-2 folders text-center" ondblclick="window.open('https://www.google.com')">
+                            <p class="contain"><img src="./img/folder.png" class="img-responsive  center-block" alt="">
+                            </p>
+                            <span>Portfolio</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center" ondblclick="window.open('https://www.google.com')">
+                            <p class="contain"><img src="./img/dock/git.png" class="img-responsive  center-block"
+                                    alt=""></p>
+                            <span>Github</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center" ondblclick="window.open('https://www.google.com')">
+                            <p class="contain"><img src="./img/note.png" class="img-responsive  center-block" alt="">
+                            </p>
+                            <span>Note</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img src="./img/11.png" class="img-responsive  center-block"
+                                    style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img src="./img/folder.png" class="img-responsive  center-block"
+                                    style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center">
+                            <p class="contain"><img src="./img/folder.png" class="img-responsive  center-block"
+                                    style="height: 64px;" alt=""></p>
+                            <span>Folder</span>
+                        </div>
+                        <div class="col-xs-2 folders text-center img_4" ondblclick="window.open('./404.html')">
+                            <p class="contain"><img src="./img/folder.png" class="img-responsive  center-block"
+                                    style="height: 64px;" alt=""></p>
+                            <span>직박구리</span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fived-row-win"></div>
+            </div>
+            <div class="resizer"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="image-overlay" id="image-overlay">
+            <div class="fluid-container">
+                <div class="first-row-img">
+                    <span class="center-text head-over">My Image</span>
+                    <div class="right">
+                        <i class="fa fa-times" onclick="closeimg()"></i>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="second-row-img">
+                    <img src="http://res.cloudinary.com/dr5ei3rt1/image/upload/v1500503391/admin-3_yilprt.jpg"
+                        class="center-block img-responsive" style="height:80vh" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="video-overlay" id="video-overlay">
+            <div class="fluid-container">
+                <div class="first-row-vid">
+                    <span class="center-text head-over">My Video</span>
+                    <div class="right">
+                        <i class="fa fa-times" onclick="closevid()"></i>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="start-window-fade hidden-start" id="start-window-fade"></div>
+        <div class="start-window hidden-start" id="start-window">
+            <div class="fluid-container" id="container-start">
+                <div class="row">
+                    <div class="col-xs-1 first-column">
+                        <div class="icon-bottom" id="power" onclick="powerOff()">
+                            <i class="fa fa-power-off fa-1x"></i>
+                        </div>
+                        <div class="icon-bottom">
+                            <i class="fa fa-cog fa-1x"></i>
+                        </div>
+                        <div class="icon-bottom">
+                            <i class="fa fa-folder-open-o fa-1x"></i>
+                        </div>
+                        <div class="icon-bottom">
+                            <i class="fa fa-user fa-1x"></i>
+                        </div>
+                        <div class="icon-bottom open-icon-list">
+                            <i class="fa fa-bars fa-1x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <footer class="nav navbar-inverse navbar-fixed-bottom footer text-center">
+            <div class="fluid-container">
+
+            </div>
+        </footer>
+
+    </div>
+    <!-- Folder 페이지 -->
+
+    <!-- Youtube&Twitch -->
+    <div class="youtube" id="youtube">
+      <div class="bar">
+        <div class="nav">
+          <div class="twitch_logo" id="twitch_logo">
+            <img src="./img/twitch.png" />
+          </div>
+          <div class="item" id="selected"> <i class="fas fa-video" onclick="closeopencom()"></i></div>
+          <div class="item"> <i class="fas fa-qrcode" onclick="returncom()" id="returncam"></i></div>
+          <div class="item"><i class="fas fa-bell" onclick="upercom()" id="upercam"></i></div>
+          <div class="item"><img src="./img/avatar.jpg" alt="avatar"></div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="검색어를 입력해주세요.">
+        </div>
+      </div>
+      <div class="main">
+        <div class="streamer-bar">
+          <div class="streamer-bar-title">
+            <p class="desktop-title">Follow Channel</p>
+            <p class="mobile-title">❤</p>
+          </div>
+          <div class="followed-channels">
+            <div class="followed-channel">
+              <div class="profile-image">
+                <img
+                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/ebc60c08-721b-4572-8f51-8be7136a0c96-profile_image-70x70.png"
+                  alt="우왁굳" />
+              </div>
+              <div class="profile-info">
+                <p class="profile-username">우왁굳(woowakgood)</p>
+                <p class="profile-game-title">Just Chatting</p>
+              </div>
+              <div class="profile-viewers">
+                <div class="live-icon"></div>
+                <div class="viewer-count">4.1K</div>
+              </div>
+            </div>
+            <div class="followed-channel">
+              <div class="profile-image">
+                <img
+                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/4c196c1c-d1e1-4ce4-9338-11020e72a94d-profile_image-70x70.png"
+                  alt="승우아빠" />
+              </div> 
+              <div class="profile-info">
+                <p class="profile-username">승우아빠(swab85)</p>
+                <p class="profile-game-title">Just Chatting</p>
+              </div>
+              <div class="profile-viewers">
+                <div class="live-icon"></div>
+                <div class="viewer-count">230</div>
+              </div>
+            </div>
+            <div class="followed-channel">
+              <div class="profile-image" style="filter: grayscale(100%) contrast(85%);">
+                <img
+                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/0bd71b32-6417-471c-8196-d58df1a0105d-profile_image-70x70.jpg"
+                  alt="오킹" />
+              </div>
+              <div class="profile-info">
+                <p class="profile-username">오킹(obm1025)</p>
+                <p class="profile-game-title">off-line</p>
+              </div>
+              <div class="profile-viewers">
+                <!-- <div class="viewer-count">Online</div> -->
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="recommended-channels">
+            <div class="streamer-bar-title">
+              <p class="desktop-title">Recommended channel</p>
+              <p class="mobile-title"><i class="fa fa-film"></i></p>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <img
+                    src="https://static-cdn.jtvnw.net/jtv_user_pictures/hanryang1125-profile_image-58261d78af47d249-70x70.jpeg"
+                    alt="Princess" />
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">풍월량(hanryangg)</p>
+                  <p class="profile-game-title">Just Chatting</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <img
+                    src="https://static-cdn.jtvnw.net/jtv_user_pictures/ee2af5f3-e68f-4e91-9e3b-0de674a6da8f-profile_image-70x70.png"
+                    alt="Sylvi" />
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">teaminven</p>
+                  <p class="profile-game-title">League of Legends</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+              <div class="followed-channel">
+                <div class="profile-image" style="filter: grayscale(100%) contrast(85%);">
+                  <img
+                    src="https://static-cdn.jtvnw.net/jtv_user_pictures/7cce4c35-3e31-44d3-8018-9c82a921fc10-profile_image-70x70.jpg"
+                    alt="Lara" />
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">인간젤리</p>
+                  <p class="profile-game-title">League of Legends</p>
+                </div>
+                <div class="profile-viewers">
+                  <div class="viewer-count"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="recommended-channels">
+            <div class="streamer-bar-title">
+              <p class="desktop-title">More YOUTUBE</p>
+              <p class="mobile-title"><i class="fa fa-film"></i></p>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fab fa-youtube"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">YouTube Premium</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">Movie</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fas fa-heart-broken"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">Game</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">Real-time</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">Learning</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+            <div class="followed-channels">
+              <div class="followed-channel">
+                <div class="profile-image">
+                  <i class="fas fa-cog"></i>
+                </div>
+                <div class="profile-info">
+                  <p class="profile-username">setting</p>
+                </div>
+                <div class="profile-viewers">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stream-content">
+          <!-- <div class="home-header">
+            <h1 class="home-title">Home</h1>
+          </div> -->
+          <div class="games">
+            <div class="games-carousel">
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/./Animal%20Crossing:%20New%20Horizons-285x380.jpg"
+                    alt="Animal Crossing" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Animal Crossing: New Horizons</p>
+                  <p class="game-viewership">61.1K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>Simulation</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-285x380.jpg"
+                    alt="League of Legends" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">League of Legends</p>
+                  <p class="game-viewership">186K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>MOBA</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-285x380.jpg"
+                    alt="World of Warcraft" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">World of Warcraft</p>
+                  <p class="game-viewership">5.4K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>MMORPG</span>
+                  <span>RPG</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/Overwatch-285x380.jpg" alt="Overwatch" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Overwatch</p>
+                  <p class="game-viewership">18.6K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>FPS</span>
+                  <span>MOBA</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/Mario%20Kart%208-285x380.jpg" alt="Mario Kart 8" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Mario Kart 8</p>
+                  <p class="game-viewership">201K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>Driving/Racing</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/VALORANT-285x380.jpg" alt="Valorant" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">VALORANT</p>
+                  <p class="game-viewership">6.1K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>FPS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="games">
+            <div class="games-carousel">
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/Cyberpunk%202077-285x380.jpg"
+                    alt="Cyberpunk 2077" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Cyberpunk 2077</p>
+                  <p class="game-viewership">61.1K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>ARPG</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/Black%20Desert%20Online-285x380.jpg"
+                    alt="Black Desert Online" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Black Desert Online</p>
+                  <p class="game-viewership">186K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>MMORPG</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/Brawl%20Stars-285x380.jpg"
+                    alt="Brawl Stars" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Brawl Stars</p>
+                  <p class="game-viewership">5.4K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>AOS</span>
+                  <span>FPS</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/KartRider%20Rush+-285x380.jpg" alt="Overwatch" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Kartrider Rush+</p>
+                  <p class="game-viewership">18.6K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>Racing</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/FIFA%20Online%204-285x380.jpg" alt="Mario Kart 8" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">FIFA ONLINE 4</p>
+                  <p class="game-viewership">201K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>Sports(Soccer)</span>
+                </div>
+              </div>
+              <div class="game">
+                <div class="game-cover">
+                  <img src="https://static-cdn.jtvnw.net/ttv-boxart/LOST%20ARK-285x380.jpg" alt="Lost Ark" />
+                </div>
+                <div class="game-info">
+                  <p class="game-title">Lost Ark</p>
+                  <p class="game-viewership">6.1K Views</p>
+                </div>
+                <div class="game-categories">
+                  <span>MMORPG</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="closebtn">
+            <i class="fas fa-times onclick="closebtn()" id="closebtn"></i>
+          </div> -->
+          </div>
+        </div>
+      </div>
+    <!-- Youtube&Twitch -->
+    
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    <script src="./script.js"></script>
+    <script src="./clock.js"></script>
+
+    <script>
+        function dbl_click(href) {
+            location.href = href;
+        }
+    </script>
+</body>
+
+</html>
